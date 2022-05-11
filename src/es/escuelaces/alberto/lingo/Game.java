@@ -31,17 +31,11 @@ public abstract class Game implements IGame {
                 char letter = word.charAt(i);
                 int hasLetter = wordToGuess.indexOf(letter);
                 if (hasLetter == i) {
-                    sb.append(SAME_PLACE_INDICATOR[0]);
-                    sb.append(letter);
-                    sb.append(SAME_PLACE_INDICATOR[1]);
+                    sb.append(StatusEnum.OK.getWithStatus(letter));
                 }else if (hasLetter != -1) {
-                    sb.append(IN_WORD_INDICATOR[0]);
-                    sb.append(letter);
-                    sb.append(IN_WORD_INDICATOR[1]);
+                    sb.append(StatusEnum.REGULAR.getWithStatus(letter)) ;
                 }else {
-                    sb.append(NOT_IN_WORD_INDICATOR[0]) ;
-                    sb.append(letter);
-                    sb.append(NOT_IN_WORD_INDICATOR[1]);
+                    sb.append(StatusEnum.BAD.getWithStatus(letter)) ;
                 }
             }
             guessedWords.add(word);

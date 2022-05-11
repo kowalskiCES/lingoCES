@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java", 
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "es.escuelaces.alberto.lingo.Main",
-            "projectName": "lingoCES_7fbb3a9",
+            "projectName": "lingoCES_f9c845cf",
             "args": "amigo i"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
         }
     ]
 }
