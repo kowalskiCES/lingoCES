@@ -10,12 +10,15 @@ public class LingoAutomatico extends Game{
         super(word, guessed);
     }
 
-    public void main(String[] args) {
+    @Override
+    public void main() {
         int coun = 0;
         System.out.println(WELCOME);
         while (!this.isGuessed()) {
-            System.out.println(guess(INTENTOS[coun]));
+            System.out.println(guess(INTENTOS[coun++]));
+            System.out.println();
             System.out.println(getWordWithGuesses());
         }
+        System.out.println(GOODBYE);
     }
 }

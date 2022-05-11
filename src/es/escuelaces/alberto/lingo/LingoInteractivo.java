@@ -12,13 +12,15 @@ public class LingoInteractivo extends Game {
         super(word, guessed);
     }
 
-    public void main(String[] args) {
-        int coun = 0;
+    @Override
+    public void main() {
         System.out.println(WELCOME);
         Scanner sc = new Scanner(System.in);
         while (!this.isGuessed()) {
             System.out.println(guess(sc.nextLine()));
+            System.out.println();
             System.out.println(getWordWithGuesses());
         }
+        System.out.println(GOODBYE);
     }
 }

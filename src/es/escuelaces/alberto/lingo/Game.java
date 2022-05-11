@@ -3,6 +3,7 @@ package es.escuelaces.alberto.lingo;
 import es.escuelaces.alberto.lingo.interfaces.*;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public abstract class Game implements IGame {
     String wordToGuess;
@@ -10,34 +11,42 @@ public abstract class Game implements IGame {
     ArrayList<Character> guessedLetters = new ArrayList<Character>();
 
     public Game(String word) {
-        this.wordToGuess = word;
+        this.wordToGuess = word.toUpperCase(Locale.ROOT);
     }
     public Game(String word, char... guessed) {
-        this.wordToGuess = word;
+        this.wordToGuess = word.toUpperCase(Locale.ROOT);
         for (int i = 0; i < guessed.length; i++) {
-            this.guessedLetters.add(guessed[i]);
+            this.guessedLetters.add(Character.toUpperCase(guessed[i]));
         }
     }
 
     public String guess(String word) {
-        if (!(word.length() == wordToGuess.length())) {
-            return word +TEXT_INVALID_WORD;
-        }  else {
-            String res = "";
+        word = word.toUpperCase(Locale.ROOT);
+        System.out.println(word);
+        if (word.length() != wordToGuess.length()) {
+            return word + " " + TEXT_INVALID_WORD;
+        } else {
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < word.length(); i++) {
                 char letter = word.charAt(i);
                 int hasLetter = wordToGuess.indexOf(letter);
                 if (hasLetter == i) {
-                    res += SAME_PLACE_INDICATOR[0] + letter + SAME_PLACE_INDICATOR[1];
+                    sb.append(SAME_PLACE_INDICATOR[0]);
+                    sb.append(letter);
+                    sb.append(SAME_PLACE_INDICATOR[1]);
                 }else if (hasLetter != -1) {
-                    res += IN_WORD_INDICATOR[0] + letter + IN_WORD_INDICATOR[1];
+                    sb.append(IN_WORD_INDICATOR[0]);
+                    sb.append(letter);
+                    sb.append(IN_WORD_INDICATOR[1]);
                 }else {
-                    res += NOT_IN_WORD_INDICATOR[0] + letter + NOT_IN_WORD_INDICATOR[1];
+                    sb.append(NOT_IN_WORD_INDICATOR[0]) ;
+                    sb.append(letter);
+                    sb.append(NOT_IN_WORD_INDICATOR[1]);
                 }
             }
             guessedWords.add(word);
             addGuessedLetters(word);
-            return res;
+            return sb.toString();
         }
     }
 
@@ -65,6 +74,6 @@ public abstract class Game implements IGame {
     }
 
     public boolean isGuessed() {
-        return (getWordWithGuesses().contains(EMPTY.toString()));
+        return (!getWordWithGuesses().contains(EMPTY.toString()));
     }
 }
