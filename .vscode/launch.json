@@ -9,8 +9,8 @@
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "es.escuelaces.alberto.lingo.Main",
-            "projectName": "lingoCES_f9c845cf",
-            "args": "amigo i"
+            "projectName": "lingoCES_e39257a9",
+            "args": "amigo a"
         },
         {
             "type": "java",

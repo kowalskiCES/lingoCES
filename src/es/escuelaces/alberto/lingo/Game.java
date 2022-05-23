@@ -10,16 +10,18 @@ public abstract class Game implements IGame {
     ArrayList<String> guessedWords = new ArrayList<>();
     ArrayList<Character> guessedLetters = new ArrayList<Character>();
 
+    //Constructor con palabra a adivinar como parametro
     public Game(String word) {
         this.wordToGuess = word.toUpperCase(Locale.ROOT);
     }
+    //Constructor con palabra a adivinar y letras asivinadas como parametros
     public Game(String word, char... guessed) {
         this.wordToGuess = word.toUpperCase(Locale.ROOT);
         for (int i = 0; i < guessed.length; i++) {
             this.guessedLetters.add(Character.toUpperCase(guessed[i]));
         }
     }
-
+    
     public String guess(String word) {
         word = word.toUpperCase(Locale.ROOT);
         System.out.println(word);

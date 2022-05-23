@@ -22,5 +22,6 @@ public class LingoInteractivo extends Game {
             System.out.println(getWordWithGuesses());
         }
         System.out.println(GOODBYE);
+        sc.close();
     }
 }

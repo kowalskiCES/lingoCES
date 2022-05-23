@@ -1,4 +1,5 @@
 package es.escuelaces.alberto.lingo;
+//Github repository: https://github.com/kowalskiCES/lingoCES
 
 import es.escuelaces.alberto.lingo.interfaces.IGame;
 
